@@ -1,0 +1,22 @@
+-- test_delta.lua
+print("[test] injected:", typeof(gethui), typeof(getgenv))
+print("[test] LocalPlayer:", game.Players.LocalPlayer)
+if not game:IsLoaded() then game.Loaded:Wait() end
+local host = gethui and gethui() or game.Players.LocalPlayer:WaitForChild("PlayerGui")
+print("[test] gui host:", host)
+local g = Instance.new("ScreenGui")
+g.Name = "delta_test_gui"
+g.Parent = host
+local f = Instance.new("Frame")
+f.Size = UDim2.fromOffset(200, 80)
+f.Position = UDim2.new(0.5, -100, 0.1, 0)
+f.BackgroundColor3 = Color3.fromRGB(0, 180, 120)
+f.Parent = g
+local t = Instance.new("TextLabel")
+t.Size = UDim2.fromScale(1, 1)
+t.BackgroundTransparency = 1
+t.Text = "DELTA OK"
+t.TextColor3 = Color3.new(1,1,1)
+t.TextScaled = true
+t.Parent = f
+print("[test] gui parented to:", g.Parent)
